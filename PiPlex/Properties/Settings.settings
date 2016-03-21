@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PiPlex.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PlexMovieFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\pierr_000\Videos\Movies</Value>
+    </Setting>
+    <Setting Name="PlexTvShowFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\pierr_000\Videos\TV Shows</Value>
+    </Setting>
+    <Setting Name="PlexMediaScannerPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe</Value>
+    </Setting>
+    <Setting Name="DonwloadFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\pierr_000\Downloads</Value>
+    </Setting>
+    <Setting Name="PlexMediaManagerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://127.0.0.1:32400/web/</Value>
+    </Setting>
+    <Setting Name="PlexMediaServerPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Server.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
