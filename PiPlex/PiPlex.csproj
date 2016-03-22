@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DurationProvier.cs" />
+    <Compile Include="FileLogger.cs" />
     <Compile Include="LoggerInterface.cs" />
     <Compile Include="PiPlex.cs">
       <SubType>Form</SubType>

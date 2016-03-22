@@ -15,21 +15,18 @@ using PiPlex.Properties;
 
 namespace PiPlex
 {
-    public partial class FormMain : Form, LoggerInterface
+    public partial class FormMain : Form
     {
-        static string[] SUPPORTED_EXTENSIONS = {".avi", ".mp4", ".mkv" };
-        const string PROMPT = ">> ";
+        FileLogger logger = new FileLogger();
 
         public void Log(string message)
         {
-            this.textBoxLog.Text += PROMPT + message + Environment.NewLine;
-            this.textBoxLog.ScrollToCaret();
+            logger.Log(message);
         }
 
         public FormMain()
         {
             InitializeComponent();
-            worker = new BackgroundWorker();
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -57,7 +54,6 @@ namespace PiPlex
 
         private void HandleVideoFileType(string path)
         {
-            Trace.WriteLine("trace test");
             Log("Calculating video file duration...");
             long duration = DurationProvier.GetDurationAsNanoSeconds(path);
             TimeSpan timeSpan = TimeSpan.FromSeconds(duration / DurationProvier.NANO_SECONDS);
@@ -92,7 +88,7 @@ namespace PiPlex
                     File.Delete(destPath);
                 }
                 File.Move(path, destPath);
-                notifyIcon.ShowBalloonTip(1000, "New " + videoType.ToString() + " updated to Plex", Path.GetFileName(destPath), ToolTipIcon.Info);
+                notifyIcon.ShowBalloonTip(1000, Path.GetFileName(destPath), videoType.ToString() + " updated to plex", ToolTipIcon.Info);
             }
             catch (Exception exception)
             {
@@ -113,11 +109,10 @@ namespace PiPlex
             }
             this.pictureBox.Image = Resources.spin;
             //If file extension is correct
-            if (!SUPPORTED_EXTENSIONS.Contains(Path.GetExtension(e.FullPath)))
+            if (!Properties.Settings.Default.SupportedFormats.Contains(Path.GetExtension(e.FullPath)))
             {
                 Log("Ignoring file [" + e.Name + "]");
                 this.pictureBox.Image = Resources.plex;
-                return;
             }
             else
             {
@@ -144,18 +139,12 @@ namespace PiPlex
             string downloadFolderPath = Settings.Default.DonwloadFolderPath;
             InitFileSystemWatcher(downloadFolderPath);
             this.pictureBox.Image = Resources.plex;
-        }
+            notifyIcon.ContextMenu = new ContextMenu();
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
+            notifyIcon.ContextMenu.MenuItems.Add("Settings", this.notifyIcon_OptionSettings);
+            notifyIcon.ContextMenu.MenuItems.Add("Logs", this.notifyIcon_OptionLogs);
+            notifyIcon.ContextMenu.MenuItems.Add("Quit", this.notifyIcon_OptionsQuit);
 
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-        }
-
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -164,9 +153,28 @@ namespace PiPlex
             f.Show();
         }
 
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
 
+        private void notifyIcon_OptionsQuit(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        private void notifyIcon_OptionLogs(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetDirectoryName(Settings.Default.LogFile));
+        }
+
+
+        private void notifyIcon_OptionSettings(object sender, EventArgs e)
+        {
+            SettingsForm f = new SettingsForm();
+            f.Show();
+        }
+
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

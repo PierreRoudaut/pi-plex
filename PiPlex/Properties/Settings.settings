@@ -20,5 +20,16 @@
     <Setting Name="PlexMediaServerPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Server.exe</Value>
     </Setting>
+    <Setting Name="SupportedFormats" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;.mkv&lt;/string&gt;
+  &lt;string&gt;.mp4&lt;/string&gt;
+  &lt;string&gt;.avi&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="LogFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PiPlex.log</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

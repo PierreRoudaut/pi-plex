@@ -48,6 +48,7 @@ namespace PiPlex
         // PLEX MOVIE FOLDER PATH
         private void buttonMovieFolders_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexMovieFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -62,6 +63,7 @@ namespace PiPlex
 
         private void buttonTvShowsFolder_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexTvShowFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -76,6 +78,7 @@ namespace PiPlex
 
         private void buttonDownloadsFolder_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.SelectedPath = Properties.Settings.Default.DonwloadFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -91,6 +94,7 @@ namespace PiPlex
 
         private void buttonPlexMediaScanner_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexMediaScannerPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -106,6 +110,7 @@ namespace PiPlex
 
         private void buttonPlexMediaManagerUrl_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexMediaManagerUrl;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {

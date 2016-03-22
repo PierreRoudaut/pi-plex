@@ -9,6 +9,7 @@ using System.ComponentModel;
 
 namespace PiPlex
 {
+    //TODO: to be deprecated when PlexMediaScanner will be tested
     class PlexProvider
     {
         LoggerInterface logger;

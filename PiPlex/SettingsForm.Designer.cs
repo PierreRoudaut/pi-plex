@@ -85,7 +85,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.73319F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.26681F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.labelPlexMoviesFolder, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxPlexMovieFolders, 1, 0);
@@ -140,15 +140,15 @@
             this.textBoxPlexMovieFolders.Location = new System.Drawing.Point(290, 4);
             this.textBoxPlexMovieFolders.Name = "textBoxPlexMovieFolders";
             this.textBoxPlexMovieFolders.ReadOnly = true;
-            this.textBoxPlexMovieFolders.Size = new System.Drawing.Size(377, 22);
+            this.textBoxPlexMovieFolders.Size = new System.Drawing.Size(375, 22);
             this.textBoxPlexMovieFolders.TabIndex = 1;
             // 
             // buttonMovieFolders
             // 
             this.buttonMovieFolders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonMovieFolders.Location = new System.Drawing.Point(674, 4);
+            this.buttonMovieFolders.Location = new System.Drawing.Point(672, 4);
             this.buttonMovieFolders.Name = "buttonMovieFolders";
-            this.buttonMovieFolders.Size = new System.Drawing.Size(56, 30);
+            this.buttonMovieFolders.Size = new System.Drawing.Size(58, 30);
             this.buttonMovieFolders.TabIndex = 2;
             this.buttonMovieFolders.Text = "...";
             this.buttonMovieFolders.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             this.textBoxTvShowFolder.Location = new System.Drawing.Point(290, 41);
             this.textBoxTvShowFolder.Name = "textBoxTvShowFolder";
             this.textBoxTvShowFolder.ReadOnly = true;
-            this.textBoxTvShowFolder.Size = new System.Drawing.Size(377, 22);
+            this.textBoxTvShowFolder.Size = new System.Drawing.Size(375, 22);
             this.textBoxTvShowFolder.TabIndex = 8;
             // 
             // label5
@@ -176,7 +176,7 @@
             // 
             // buttonTvShowsFolder
             // 
-            this.buttonTvShowsFolder.Location = new System.Drawing.Point(674, 41);
+            this.buttonTvShowsFolder.Location = new System.Drawing.Point(672, 41);
             this.buttonTvShowsFolder.Name = "buttonTvShowsFolder";
             this.buttonTvShowsFolder.Size = new System.Drawing.Size(50, 23);
             this.buttonTvShowsFolder.TabIndex = 11;
@@ -204,12 +204,12 @@
             this.textBoxDownloadFolder.Location = new System.Drawing.Point(290, 84);
             this.textBoxDownloadFolder.Name = "textBoxDownloadFolder";
             this.textBoxDownloadFolder.ReadOnly = true;
-            this.textBoxDownloadFolder.Size = new System.Drawing.Size(377, 22);
+            this.textBoxDownloadFolder.Size = new System.Drawing.Size(375, 22);
             this.textBoxDownloadFolder.TabIndex = 13;
             // 
             // buttonDownloadsFolder
             // 
-            this.buttonDownloadsFolder.Location = new System.Drawing.Point(674, 84);
+            this.buttonDownloadsFolder.Location = new System.Drawing.Point(672, 84);
             this.buttonDownloadsFolder.Name = "buttonDownloadsFolder";
             this.buttonDownloadsFolder.Size = new System.Drawing.Size(50, 23);
             this.buttonDownloadsFolder.TabIndex = 14;
@@ -230,7 +230,7 @@
             // 
             // buttonPlexMediaScanner
             // 
-            this.buttonPlexMediaScanner.Location = new System.Drawing.Point(674, 129);
+            this.buttonPlexMediaScanner.Location = new System.Drawing.Point(672, 129);
             this.buttonPlexMediaScanner.Name = "buttonPlexMediaScanner";
             this.buttonPlexMediaScanner.Size = new System.Drawing.Size(50, 23);
             this.buttonPlexMediaScanner.TabIndex = 16;
@@ -244,15 +244,15 @@
             this.textBoxPlexMediaScanner.Location = new System.Drawing.Point(290, 129);
             this.textBoxPlexMediaScanner.Name = "textBoxPlexMediaScanner";
             this.textBoxPlexMediaScanner.ReadOnly = true;
-            this.textBoxPlexMediaScanner.Size = new System.Drawing.Size(377, 22);
+            this.textBoxPlexMediaScanner.Size = new System.Drawing.Size(375, 22);
             this.textBoxPlexMediaScanner.TabIndex = 17;
             // 
             // buttonPlexMediaManagerUrl
             // 
             this.buttonPlexMediaManagerUrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPlexMediaManagerUrl.Location = new System.Drawing.Point(674, 163);
+            this.buttonPlexMediaManagerUrl.Location = new System.Drawing.Point(672, 163);
             this.buttonPlexMediaManagerUrl.Name = "buttonPlexMediaManagerUrl";
-            this.buttonPlexMediaManagerUrl.Size = new System.Drawing.Size(56, 29);
+            this.buttonPlexMediaManagerUrl.Size = new System.Drawing.Size(58, 29);
             this.buttonPlexMediaManagerUrl.TabIndex = 18;
             this.buttonPlexMediaManagerUrl.Text = "...";
             this.buttonPlexMediaManagerUrl.UseVisualStyleBackColor = true;
@@ -264,7 +264,7 @@
             this.textBoxPlexMediaManagerUrl.Location = new System.Drawing.Point(290, 163);
             this.textBoxPlexMediaManagerUrl.Name = "textBoxPlexMediaManagerUrl";
             this.textBoxPlexMediaManagerUrl.ReadOnly = true;
-            this.textBoxPlexMediaManagerUrl.Size = new System.Drawing.Size(377, 22);
+            this.textBoxPlexMediaManagerUrl.Size = new System.Drawing.Size(375, 22);
             this.textBoxPlexMediaManagerUrl.TabIndex = 19;
             // 
             // SettingsForm
