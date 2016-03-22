@@ -36,8 +36,8 @@ namespace PiPlex
             watcher.SynchronizingObject = this;
             try
             {
+                //TODO: handle
                 watcher.Path = path;
-
             }
             catch (Exception e)
             {

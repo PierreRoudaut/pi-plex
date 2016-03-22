@@ -85,7 +85,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.73319F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.26681F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.labelPlexMoviesFolder, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxPlexMovieFolders, 1, 0);
@@ -119,7 +119,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(4, 160);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(279, 35);
+            this.label4.Size = new System.Drawing.Size(278, 35);
             this.label4.TabIndex = 7;
             this.label4.Text = "Plex Media Manager URL";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,7 +129,7 @@
             this.labelPlexMoviesFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelPlexMoviesFolder.Location = new System.Drawing.Point(4, 1);
             this.labelPlexMoviesFolder.Name = "labelPlexMoviesFolder";
-            this.labelPlexMoviesFolder.Size = new System.Drawing.Size(279, 36);
+            this.labelPlexMoviesFolder.Size = new System.Drawing.Size(278, 36);
             this.labelPlexMoviesFolder.TabIndex = 0;
             this.labelPlexMoviesFolder.Text = "Plex movies folder";
             this.labelPlexMoviesFolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,18 +137,18 @@
             // textBoxPlexMovieFolders
             // 
             this.textBoxPlexMovieFolders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPlexMovieFolders.Location = new System.Drawing.Point(290, 4);
+            this.textBoxPlexMovieFolders.Location = new System.Drawing.Point(289, 4);
             this.textBoxPlexMovieFolders.Name = "textBoxPlexMovieFolders";
             this.textBoxPlexMovieFolders.ReadOnly = true;
-            this.textBoxPlexMovieFolders.Size = new System.Drawing.Size(375, 22);
+            this.textBoxPlexMovieFolders.Size = new System.Drawing.Size(374, 22);
             this.textBoxPlexMovieFolders.TabIndex = 1;
             // 
             // buttonMovieFolders
             // 
             this.buttonMovieFolders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonMovieFolders.Location = new System.Drawing.Point(672, 4);
+            this.buttonMovieFolders.Location = new System.Drawing.Point(670, 4);
             this.buttonMovieFolders.Name = "buttonMovieFolders";
-            this.buttonMovieFolders.Size = new System.Drawing.Size(58, 30);
+            this.buttonMovieFolders.Size = new System.Drawing.Size(60, 30);
             this.buttonMovieFolders.TabIndex = 2;
             this.buttonMovieFolders.Text = "...";
             this.buttonMovieFolders.UseVisualStyleBackColor = true;
@@ -157,10 +157,10 @@
             // textBoxTvShowFolder
             // 
             this.textBoxTvShowFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTvShowFolder.Location = new System.Drawing.Point(290, 41);
+            this.textBoxTvShowFolder.Location = new System.Drawing.Point(289, 41);
             this.textBoxTvShowFolder.Name = "textBoxTvShowFolder";
             this.textBoxTvShowFolder.ReadOnly = true;
-            this.textBoxTvShowFolder.Size = new System.Drawing.Size(375, 22);
+            this.textBoxTvShowFolder.Size = new System.Drawing.Size(374, 22);
             this.textBoxTvShowFolder.TabIndex = 8;
             // 
             // label5
@@ -169,14 +169,14 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(4, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(279, 42);
+            this.label5.Size = new System.Drawing.Size(278, 42);
             this.label5.TabIndex = 10;
             this.label5.Text = "Plex TV show folder";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonTvShowsFolder
             // 
-            this.buttonTvShowsFolder.Location = new System.Drawing.Point(672, 41);
+            this.buttonTvShowsFolder.Location = new System.Drawing.Point(670, 41);
             this.buttonTvShowsFolder.Name = "buttonTvShowsFolder";
             this.buttonTvShowsFolder.Size = new System.Drawing.Size(50, 23);
             this.buttonTvShowsFolder.TabIndex = 11;
@@ -193,7 +193,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(4, 81);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(279, 44);
+            this.label6.Size = new System.Drawing.Size(278, 44);
             this.label6.TabIndex = 12;
             this.label6.Text = "Download folder";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,15 +201,15 @@
             // textBoxDownloadFolder
             // 
             this.textBoxDownloadFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDownloadFolder.Location = new System.Drawing.Point(290, 84);
+            this.textBoxDownloadFolder.Location = new System.Drawing.Point(289, 84);
             this.textBoxDownloadFolder.Name = "textBoxDownloadFolder";
             this.textBoxDownloadFolder.ReadOnly = true;
-            this.textBoxDownloadFolder.Size = new System.Drawing.Size(375, 22);
+            this.textBoxDownloadFolder.Size = new System.Drawing.Size(374, 22);
             this.textBoxDownloadFolder.TabIndex = 13;
             // 
             // buttonDownloadsFolder
             // 
-            this.buttonDownloadsFolder.Location = new System.Drawing.Point(672, 84);
+            this.buttonDownloadsFolder.Location = new System.Drawing.Point(670, 84);
             this.buttonDownloadsFolder.Name = "buttonDownloadsFolder";
             this.buttonDownloadsFolder.Size = new System.Drawing.Size(50, 23);
             this.buttonDownloadsFolder.TabIndex = 14;
@@ -223,14 +223,14 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(4, 126);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(279, 33);
+            this.label7.Size = new System.Drawing.Size(278, 33);
             this.label7.TabIndex = 15;
             this.label7.Text = "Plex Media Scanner";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonPlexMediaScanner
             // 
-            this.buttonPlexMediaScanner.Location = new System.Drawing.Point(672, 129);
+            this.buttonPlexMediaScanner.Location = new System.Drawing.Point(670, 129);
             this.buttonPlexMediaScanner.Name = "buttonPlexMediaScanner";
             this.buttonPlexMediaScanner.Size = new System.Drawing.Size(50, 23);
             this.buttonPlexMediaScanner.TabIndex = 16;
@@ -241,18 +241,18 @@
             // textBoxPlexMediaScanner
             // 
             this.textBoxPlexMediaScanner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPlexMediaScanner.Location = new System.Drawing.Point(290, 129);
+            this.textBoxPlexMediaScanner.Location = new System.Drawing.Point(289, 129);
             this.textBoxPlexMediaScanner.Name = "textBoxPlexMediaScanner";
             this.textBoxPlexMediaScanner.ReadOnly = true;
-            this.textBoxPlexMediaScanner.Size = new System.Drawing.Size(375, 22);
+            this.textBoxPlexMediaScanner.Size = new System.Drawing.Size(374, 22);
             this.textBoxPlexMediaScanner.TabIndex = 17;
             // 
             // buttonPlexMediaManagerUrl
             // 
             this.buttonPlexMediaManagerUrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPlexMediaManagerUrl.Location = new System.Drawing.Point(672, 163);
+            this.buttonPlexMediaManagerUrl.Location = new System.Drawing.Point(670, 163);
             this.buttonPlexMediaManagerUrl.Name = "buttonPlexMediaManagerUrl";
-            this.buttonPlexMediaManagerUrl.Size = new System.Drawing.Size(58, 29);
+            this.buttonPlexMediaManagerUrl.Size = new System.Drawing.Size(60, 29);
             this.buttonPlexMediaManagerUrl.TabIndex = 18;
             this.buttonPlexMediaManagerUrl.Text = "...";
             this.buttonPlexMediaManagerUrl.UseVisualStyleBackColor = true;
@@ -261,10 +261,10 @@
             // textBoxPlexMediaManagerUrl
             // 
             this.textBoxPlexMediaManagerUrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPlexMediaManagerUrl.Location = new System.Drawing.Point(290, 163);
+            this.textBoxPlexMediaManagerUrl.Location = new System.Drawing.Point(289, 163);
             this.textBoxPlexMediaManagerUrl.Name = "textBoxPlexMediaManagerUrl";
             this.textBoxPlexMediaManagerUrl.ReadOnly = true;
-            this.textBoxPlexMediaManagerUrl.Size = new System.Drawing.Size(375, 22);
+            this.textBoxPlexMediaManagerUrl.Size = new System.Drawing.Size(374, 22);
             this.textBoxPlexMediaManagerUrl.TabIndex = 19;
             // 
             // SettingsForm

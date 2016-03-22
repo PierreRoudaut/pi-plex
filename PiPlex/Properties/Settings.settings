@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="PlexMovieFolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\pierr_000\Videos\Movies</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PlexTvShowFolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\pierr_000\Videos\TV Shows</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PlexMediaScannerPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe</Value>
     </Setting>
     <Setting Name="DonwloadFolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\pierr_000\Downloads</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PlexMediaManagerUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://127.0.0.1:32400/web/</Value>

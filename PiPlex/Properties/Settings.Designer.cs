@@ -25,7 +25,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\pierr_000\\Videos\\Movies")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PlexMovieFolderPath {
             get {
                 return ((string)(this["PlexMovieFolderPath"]));
@@ -37,7 +37,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\pierr_000\\Videos\\TV Shows")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PlexTvShowFolderPath {
             get {
                 return ((string)(this["PlexTvShowFolderPath"]));
@@ -61,7 +61,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\pierr_000\\Downloads")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DonwloadFolderPath {
             get {
                 return ((string)(this["DonwloadFolderPath"]));
