@@ -106,9 +106,7 @@ namespace PiPlex
             //MOVE FILE TO PROPER PLEX FOLDER
             HandleVideoFileType(e.FullPath);
 
-            //RUN PLEX MEDIA SERVER
-            PlexMediaServer.Run();
-
+            
             //UPDATE PLEX LIBRAIRY
             PlexMediaScanner.Update();
 
@@ -137,6 +135,9 @@ namespace PiPlex
                 notifyIcon.ShowBalloonTip(10 * 1000,"Check PiPlex settings", exception.Message , ToolTipIcon.Warning);
                 return;
             }
+            //RUN PLEX MEDIA SERVER
+            PlexMediaServer.Run();
+
             string downloadFolderPath = Settings.Default.DonwloadFolderPath;
             InitFileSystemWatcher(downloadFolderPath);
 
@@ -152,13 +153,14 @@ namespace PiPlex
         {
             try
             {
-                Process.Start(Settings.Default.LogFile);
+                string logFilePath = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\" + Settings.Default.LogFile;
+                Process.Start(logFilePath);
                 Logger.Info("PiPlex:notifyIcon_OptionLogs", "Log file opened");
             }
             catch (Exception)
             {
                 Logger.Error("PiPlex:notifyIcon_OptionLogs", "Log file does not exist");
-                notifyIcon.ShowBalloonTip(10000, "Oops", "The log file has been removed or replace", ToolTipIcon.Warning);
+                notifyIcon.ShowBalloonTip(10 * 1000, "Oops", "The log file has been removed or replace", ToolTipIcon.Warning);
             }
         }
 

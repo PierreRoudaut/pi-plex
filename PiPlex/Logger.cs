@@ -13,14 +13,13 @@ namespace PiPlex
     {
         private static void Log(string mode, string context, string logMessage)
         {
-            using (StreamWriter w = File.AppendText(Settings.Default.LogFile))
+            string logFilePath = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\" + Settings.Default.LogFile;
+            using (StreamWriter w = File.AppendText(logFilePath))
             {
-                string outpout = "["+DateTime.Now.ToLongDateString()+"] ["+mode+"] ["+context+"] ["+logMessage+"]";
-                
+                string outpout = "[" + DateTime.Now.ToString() + "] [" + mode + "] [" + context + "] [" + logMessage + "]";
+
                 //Loging to debug console
-                #if DEBUG
                 Debug.WriteLine(outpout);
-                #endif
 
                 //Loging to file
                 w.WriteLine(outpout);
