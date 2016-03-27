@@ -17,16 +17,10 @@ namespace PiPlex
 {
     public partial class FormMain : Form
     {
-        FileLogger logger = new FileLogger();
-
-        public void Log(string message)
-        {
-            logger.Log(message);
-        }
-
         public FormMain()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -36,12 +30,13 @@ namespace PiPlex
             watcher.SynchronizingObject = this;
             try
             {
-                //TODO: handle
                 watcher.Path = path;
             }
             catch (Exception e)
             {
-                throw new Exception("Folder does not exist:" + e.Message);
+                Logger.Error("PiPlex:InitFileSystemWatcher", e.Message);
+                notifyIcon.ShowBalloonTip(5 * 1000, "Error", "Folder does not exist", ToolTipIcon.Error);
+                return;
             }
             watcher.NotifyFilter = 
                 NotifyFilters.LastAccess | 
@@ -54,7 +49,7 @@ namespace PiPlex
 
         private void HandleVideoFileType(string path)
         {
-            Log("Calculating video file duration...");
+            Logger.Info("PiPlex:HandleVideoFileType", "Calculating video file duration");
             long duration = DurationProvier.GetDurationAsNanoSeconds(path);
             TimeSpan timeSpan = TimeSpan.FromSeconds(duration / DurationProvier.NANO_SECONDS);
 
@@ -63,24 +58,23 @@ namespace PiPlex
 
             //DETERMINING VIDEO TYPE
             DurationProvier.VideoType videoType = DurationProvier.GetVideoTypeFromDuration(duration);
-            Log("Duration: " + foundDurationMessage + "   Type: " + videoType.ToString());
-
+            Logger.Info("PiPlex:HandleVideoFileType", "Duration: " + foundDurationMessage + " - Type: " + videoType.ToString());
 
             string destPath = null;
             switch (videoType)
             {
                 case DurationProvier.VideoType.UNDEFINED:
                 case DurationProvier.VideoType.MOVIE:
-                    destPath = Settings.Default.PlexMovieFolderPath + Path.GetFileName(path);
+                    destPath = Settings.Default.PlexMovieFolderPath + "\\" + Path.GetFileName(path);
                     break;
                 case DurationProvier.VideoType.TV_SHOW:
-                    destPath = Settings.Default.PlexTvShowFolderPath + Path.GetFileName(path);
+                    destPath = Settings.Default.PlexTvShowFolderPath + "\\" + Path.GetFileName(path);
                     break;
             }
 
 
             //MOVING FILE TO DEST FOLDER
-            Log("Moving file to:  " + destPath);
+            Logger.Info("PiPlex:HandleVideoFileType", "Moving file to: " + destPath);
             try
             {
                 if (File.Exists(destPath))
@@ -88,35 +82,25 @@ namespace PiPlex
                     File.Delete(destPath);
                 }
                 File.Move(path, destPath);
-                notifyIcon.ShowBalloonTip(1000, Path.GetFileName(destPath), videoType.ToString() + " updated to plex", ToolTipIcon.Info);
+                Logger.Info("PiPlex:HandleVideoFileType", "File moved");
             }
             catch (Exception exception)
             {
-                Log("ERROR [unable to move file]: " + exception.Message);
+                Logger.Error("PiPlex:HandleVideoFileType", "Unable to move file: " + exception.Message);
             }            
         }
 
         private void OnNewFileDownloaded(object source, FileSystemEventArgs e)
         {
-            try
-            {
-                SettingsForm.ValidateSettings();
-                Log("Settings are ok");
-            }
-            catch (Exception exception)
-            {
-                Log(exception.Message);
-            }
-            this.pictureBox.Image = Resources.spin;
             //If file extension is correct
             if (!Properties.Settings.Default.SupportedFormats.Contains(Path.GetExtension(e.FullPath)))
             {
-                Log("Ignoring file [" + e.Name + "]");
-                this.pictureBox.Image = Resources.plex;
+                Logger.Warning("PiPlex:OnNewFileDownloaded", "Ignoring file " + e.Name);
+                return;
             }
             else
             {
-                Log("Detecting file [" + e.Name + "]");
+                Logger.Info("PiPlex:OnNewFileDownloaded", "Handling file " + e.Name);
             }
 
             //MOVE FILE TO PROPER PLEX FOLDER
@@ -128,31 +112,35 @@ namespace PiPlex
             //UPDATE PLEX LIBRAIRY
             PlexMediaScanner.Update();
 
-            this.pictureBox.Image = Resources.plex;
             //DONE
-
+            notifyIcon.ShowBalloonTip(5000, e.Name, "Updated to Plex librairy", ToolTipIcon.Info);
+            Logger.Info("PiPlex:OnNewFileDownloaded", "Updated to Plex librairy");
         }
 
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            string downloadFolderPath = Settings.Default.DonwloadFolderPath;
-            InitFileSystemWatcher(downloadFolderPath);
-            this.pictureBox.Image = Resources.plex;
             notifyIcon.ContextMenu = new ContextMenu();
-
             notifyIcon.ContextMenu.MenuItems.Add("Settings", this.notifyIcon_OptionSettings);
             notifyIcon.ContextMenu.MenuItems.Add("Logs", this.notifyIcon_OptionLogs);
             notifyIcon.ContextMenu.MenuItems.Add("Quit", this.notifyIcon_OptionsQuit);
 
-        }
+            Logger.Info("PiPlex:FormMain_Load", "Loading Piplex");
+            try
+            {
+                SettingsForm.ValidateSettings();
+                Logger.Info("PiPlex:FormMain_Load", "Settings are OK");
+            }
+            catch (Exception exception)
+            {
+                Logger.Error("PiPlex:FormMain_Load", "Invalid settings: " + exception.Message);
+                notifyIcon.ShowBalloonTip(10 * 1000,"Check PiPlex settings", exception.Message , ToolTipIcon.Warning);
+                return;
+            }
+            string downloadFolderPath = Settings.Default.DonwloadFolderPath;
+            InitFileSystemWatcher(downloadFolderPath);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SettingsForm f = new SettingsForm();
-            f.Show();
         }
-
 
         private void notifyIcon_OptionsQuit(object sender, EventArgs e)
         {
@@ -162,7 +150,16 @@ namespace PiPlex
 
         private void notifyIcon_OptionLogs(object sender, EventArgs e)
         {
-            Process.Start(Path.GetDirectoryName(Settings.Default.LogFile));
+            try
+            {
+                Process.Start(Settings.Default.LogFile);
+                Logger.Info("PiPlex:notifyIcon_OptionLogs", "Log file opened");
+            }
+            catch (Exception)
+            {
+                Logger.Error("PiPlex:notifyIcon_OptionLogs", "Log file does not exist");
+                notifyIcon.ShowBalloonTip(10000, "Oops", "The log file has been removed or replace", ToolTipIcon.Warning);
+            }
         }
 
 

@@ -4,15 +4,21 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:PiPlexInstaller"
-"LanguageId" = "3:1033"
+"LanguageId" = "3:1036"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:1033"
+"UILanguageId" = "3:1036"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_0FAEB5FAF9C94595AE9A0E51057E7F53"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
         "Entry"
         {
         "MsmKey" = "8:_5870EF6A13F1C07B73D9DA8893E7ADE3"
@@ -146,6 +152,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -170,6 +184,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -200,6 +222,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0FAEB5FAF9C94595AE9A0E51057E7F53"
+            {
+            "SourcePath" = "8:..\\..\\..\\Downloads\\plex.ico"
+            "TargetName" = "8:plex.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_19B738143DB4445285CDF294D795F418"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5870EF6A13F1C07B73D9DA8893E7ADE3"
             {
             "AssemblyRegister" = "3:1"
@@ -414,6 +456,18 @@
                 {
                 }
             }
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_19B738143DB4445285CDF294D795F418"
+            {
+            "DefaultLocation" = "8:[TARGETDIR]"
+            "Name" = "8:PiPlex Resource Folder"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY1"
+                "Folders"
+                {
+                }
+            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_5EA160C5D2574C799422517322E78E84"
             {
             "Name" = "8:#1921"
@@ -457,15 +511,15 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1033"
+        "LangId" = "3:1036"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:PiPlexInstaller"
+        "ProductName" = "8:PiPlex"
         "ProductCode" = "8:{7A4C9D78-A1CF-4D99-AB98-A6955582D00D}"
-        "PackageCode" = "8:{CD462A6E-58D8-42A4-AB23-F1E042552962}"
+        "PackageCode" = "8:{9D87E0F2-A658-4874-95D1-03B775C02F0B}"
         "UpgradeCode" = "8:{55FBDA3D-DC58-4DA2-943C-1B3D79FD31E5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -473,12 +527,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Pips"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:PiPlexInstaller"
+        "Title" = "8:PiPlex"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Pips"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -585,6 +639,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_26B0226B5C354748AA918A3F01DED6EA"
+            {
+            "Name" = "8:PiPlex"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7DAFC6AB8A48431A8128244DD4404614"
+            "Folder" = "8:_5EA160C5D2574C799422517322E78E84"
+            "WorkingFolder" = "8:_FC4924ABDD6D499DB25A2277BA1F7F97"
+            "Icon" = "8:_0FAEB5FAF9C94595AE9A0E51057E7F53"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D7896008A3E8451FAB5152ECC843534D"
+            {
+            "Name" = "8:PiPlex"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7DAFC6AB8A48431A8128244DD4404614"
+            "Folder" = "8:_18D1B47B6D1B4A379CFEBA11FB540C83"
+            "WorkingFolder" = "8:_FC4924ABDD6D499DB25A2277BA1F7F97"
+            "Icon" = "8:_0FAEB5FAF9C94595AE9A0E51057E7F53"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -986,7 +1068,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7DAFC6AB8A48431A8128244DD4404614"
             {
-            "SourcePath" = "8:..\\PiPlex\\obj\\Debug\\PiPlex.exe"
+            "SourcePath" = "8:..\\PiPlex\\obj\\Release\\PiPlex.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FC4924ABDD6D499DB25A2277BA1F7F97"

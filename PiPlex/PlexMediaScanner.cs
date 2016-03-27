@@ -9,9 +9,26 @@ namespace PiPlex
 {
     class PlexMediaScanner
     {
-        public static void Update()
+        public static bool Update()
         {
-            Process.Start(Properties.Settings.Default.PlexMediaScannerPath + " -r -a -s");
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.FileName = Properties.Settings.Default.PlexMediaScannerPath;
+
+                //Scan
+                process.StartInfo.Arguments = "-s";
+                process.Start();
+
+                Logger.Info("PlexMediaScanner:Update", "Updated OK");
+                return true;
+            }
+            catch (Exception exception)
+            {
+                Logger.Error("PlexMediaScanner:Update", "Updated KO: " + exception.Message);
+            }
+            return false;
         }
     }
 }

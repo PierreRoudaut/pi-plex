@@ -95,8 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DurationProvier.cs" />
-    <Compile Include="FileLogger.cs" />
-    <Compile Include="LoggerInterface.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="PiPlex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,7 +104,6 @@
     </Compile>
     <Compile Include="KnownFolders.cs" />
     <Compile Include="PlexMediaServer.cs" />
-    <Compile Include="PlexProvider.cs" />
     <Compile Include="PlexMediaScanner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

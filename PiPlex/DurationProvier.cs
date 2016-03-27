@@ -59,7 +59,7 @@ namespace PiPlex
             }
             catch (Exception exception)
             {
-                Debug.WriteLine("ERROR calculating file duration: " + exception.Message);
+                Logger.Error("DurationProvier:GetDurationAsNanoSeconds", "Unable to calculate file duration: " + exception.Message);
             }
             return 0;
         }

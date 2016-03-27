@@ -9,9 +9,19 @@ namespace PiPlex
 {
     class PlexMediaServer
     {
-        public static void Run()
+        public static bool Run()
         {
-            Process.Start(Properties.Settings.Default.PlexMediaServerPath);
+            try
+            {
+                Process.Start(Properties.Settings.Default.PlexMediaServerPath);
+                Logger.Info("PlexMediaServer:Run", "Run OK");
+                return true;
+            }
+            catch (Exception exception)
+            {
+                Logger.Error("PlexMediaServer:Run", "Run KO: " + exception.Message);
+            }
+            return false;
         }
     }
 }
