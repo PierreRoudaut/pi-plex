@@ -13,6 +13,7 @@ After the file has been moved, PiPlex will update your Plex Media library, launc
 On your phone, swipe down to refresh your Plex app and start watching.
 
 ## Installation
+Got the **release** tab of the project, download and install the latest version of: 
 ```
 PiPlexInstaller.msi
 ```
