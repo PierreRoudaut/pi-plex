@@ -35,6 +35,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Note
 
-The idea of creating such this software came to me by pure laziness. I wanted to avoid getting up and checking the status of my downloads and do this repetitive task for all Plex users that is to move the downloaded files to the appropriate folders and update the Plex library.
+The idea of creating this software came to me by pure laziness. I wanted to avoid getting up and checking the status of my downloads and do this repetitive task for all Plex users that is to move the downloaded files to the appropriate folders and update the Plex library.
 
 You can now focus on downloading and watching your content without having to organize it on Plex.
