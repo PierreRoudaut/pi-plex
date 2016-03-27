@@ -239,7 +239,7 @@
             this.downloadFolderTextBox.Location = new System.Drawing.Point(169, 9);
             this.downloadFolderTextBox.Name = "downloadFolderTextBox";
             this.downloadFolderTextBox.ReadOnly = true;
-            this.downloadFolderTextBox.Size = new System.Drawing.Size(273, 22);
+            this.downloadFolderTextBox.Size = new System.Drawing.Size(376, 22);
             this.downloadFolderTextBox.TabIndex = 4;
             // 
             // plexMovieFolderTextBox
@@ -247,7 +247,7 @@
             this.plexMovieFolderTextBox.Location = new System.Drawing.Point(169, 42);
             this.plexMovieFolderTextBox.Name = "plexMovieFolderTextBox";
             this.plexMovieFolderTextBox.ReadOnly = true;
-            this.plexMovieFolderTextBox.Size = new System.Drawing.Size(273, 22);
+            this.plexMovieFolderTextBox.Size = new System.Drawing.Size(376, 22);
             this.plexMovieFolderTextBox.TabIndex = 5;
             // 
             // plexTvShowFolderTextBox
@@ -255,7 +255,7 @@
             this.plexTvShowFolderTextBox.Location = new System.Drawing.Point(169, 76);
             this.plexTvShowFolderTextBox.Name = "plexTvShowFolderTextBox";
             this.plexTvShowFolderTextBox.ReadOnly = true;
-            this.plexTvShowFolderTextBox.Size = new System.Drawing.Size(273, 22);
+            this.plexTvShowFolderTextBox.Size = new System.Drawing.Size(376, 22);
             this.plexTvShowFolderTextBox.TabIndex = 6;
             // 
             // plexMediaScannerTextBox
@@ -263,12 +263,12 @@
             this.plexMediaScannerTextBox.Location = new System.Drawing.Point(169, 112);
             this.plexMediaScannerTextBox.Name = "plexMediaScannerTextBox";
             this.plexMediaScannerTextBox.ReadOnly = true;
-            this.plexMediaScannerTextBox.Size = new System.Drawing.Size(273, 22);
+            this.plexMediaScannerTextBox.Size = new System.Drawing.Size(376, 22);
             this.plexMediaScannerTextBox.TabIndex = 7;
             // 
             // downloadFolderButton
             // 
-            this.downloadFolderButton.Location = new System.Drawing.Point(448, 9);
+            this.downloadFolderButton.Location = new System.Drawing.Point(551, 8);
             this.downloadFolderButton.Name = "downloadFolderButton";
             this.downloadFolderButton.Size = new System.Drawing.Size(54, 23);
             this.downloadFolderButton.TabIndex = 8;
@@ -278,7 +278,7 @@
             // 
             // plexMovieFolderButton
             // 
-            this.plexMovieFolderButton.Location = new System.Drawing.Point(448, 42);
+            this.plexMovieFolderButton.Location = new System.Drawing.Point(551, 41);
             this.plexMovieFolderButton.Name = "plexMovieFolderButton";
             this.plexMovieFolderButton.Size = new System.Drawing.Size(54, 23);
             this.plexMovieFolderButton.TabIndex = 9;
@@ -288,7 +288,7 @@
             // 
             // plexTvShowFolderButton
             // 
-            this.plexTvShowFolderButton.Location = new System.Drawing.Point(448, 76);
+            this.plexTvShowFolderButton.Location = new System.Drawing.Point(551, 75);
             this.plexTvShowFolderButton.Name = "plexTvShowFolderButton";
             this.plexTvShowFolderButton.Size = new System.Drawing.Size(54, 23);
             this.plexTvShowFolderButton.TabIndex = 10;
@@ -298,7 +298,7 @@
             // 
             // plexMediaScannerButton
             // 
-            this.plexMediaScannerButton.Location = new System.Drawing.Point(448, 112);
+            this.plexMediaScannerButton.Location = new System.Drawing.Point(551, 111);
             this.plexMediaScannerButton.Name = "plexMediaScannerButton";
             this.plexMediaScannerButton.Size = new System.Drawing.Size(54, 23);
             this.plexMediaScannerButton.TabIndex = 11;
@@ -308,7 +308,7 @@
             // 
             // plexMediaServerButton
             // 
-            this.plexMediaServerButton.Location = new System.Drawing.Point(448, 147);
+            this.plexMediaServerButton.Location = new System.Drawing.Point(551, 146);
             this.plexMediaServerButton.Name = "plexMediaServerButton";
             this.plexMediaServerButton.Size = new System.Drawing.Size(54, 23);
             this.plexMediaServerButton.TabIndex = 14;
@@ -321,7 +321,7 @@
             this.plexMediaServerTextBox.Location = new System.Drawing.Point(169, 147);
             this.plexMediaServerTextBox.Name = "plexMediaServerTextBox";
             this.plexMediaServerTextBox.ReadOnly = true;
-            this.plexMediaServerTextBox.Size = new System.Drawing.Size(273, 22);
+            this.plexMediaServerTextBox.Size = new System.Drawing.Size(376, 22);
             this.plexMediaServerTextBox.TabIndex = 13;
             // 
             // plexMediaServerLabel
@@ -341,7 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 182);
+            this.ClientSize = new System.Drawing.Size(626, 181);
             this.Controls.Add(this.plexMediaServerButton);
             this.Controls.Add(this.plexMediaServerTextBox);
             this.Controls.Add(this.plexMediaServerLabel);

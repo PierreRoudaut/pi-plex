@@ -113,7 +113,7 @@ namespace PiPlex
             PlexMediaScanner.Update();
 
             //DONE
-            notifyIcon.ShowBalloonTip(5000, e.Name, "Updated to Plex librairy", ToolTipIcon.Info);
+            notifyIcon.ShowBalloonTip(5 * 1000, e.Name, "Updated to Plex librairy", ToolTipIcon.Info);
             Logger.Info("PiPlex:OnNewFileDownloaded", "Updated to Plex librairy");
         }
 
