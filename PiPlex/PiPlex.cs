@@ -118,6 +118,12 @@ namespace PiPlex
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            //If PiPlex already instantiated
+            if (Process.GetProcessesByName("PiPlex").Length == 2)
+            {
+                Application.Exit();
+            }
+
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.MenuItems.Add("Settings", this.notifyIcon_OptionSettings);
             notifyIcon.ContextMenu.MenuItems.Add("Logs", this.notifyIcon_OptionLogs);
