@@ -39,6 +39,7 @@ namespace PiPlex
 
         public static long GetDurationAsNanoSeconds(string filePath)
         {
+            Logger.Info("DurationProvier:GetDurationAsNanoSeconds", "Calculating video file duration");
             long duration;
             try
             {

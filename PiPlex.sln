@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiPlex", "PiPlex\PiPlex.csproj", "{CFD2DC62-CD4C-48E6-83BE-19A09F37B392}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PiPlexInstaller", "PiPlexInstaller\PiPlexInstaller.vdproj", "{53C5E707-4A7A-454C-B408-2509F55C03AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiPlexTests", "PiPlexTests\PiPlexTests.csproj", "{3C58FB34-8CDB-4160-B398-12AF5C18C72D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{53C5E707-4A7A-454C-B408-2509F55C03AC}.Debug|Any CPU.Deploy.0 = Debug
 		{53C5E707-4A7A-454C-B408-2509F55C03AC}.Release|Any CPU.ActiveCfg = Release
 		{53C5E707-4A7A-454C-B408-2509F55C03AC}.Release|Any CPU.Build.0 = Release
+		{3C58FB34-8CDB-4160-B398-12AF5C18C72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C58FB34-8CDB-4160-B398-12AF5C18C72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C58FB34-8CDB-4160-B398-12AF5C18C72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C58FB34-8CDB-4160-B398-12AF5C18C72D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

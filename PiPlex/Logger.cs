@@ -9,7 +9,7 @@ using PiPlex.Properties;
 
 namespace PiPlex
 {
-    class Logger
+    public class Logger
     {
         private static void Log(string mode, string context, string logMessage)
         {

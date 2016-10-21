@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using PiPlex.Properties;
 
+
 namespace PiPlex
 {
     public partial class FormMain : Form
@@ -21,6 +22,14 @@ namespace PiPlex
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Minimized;
+            notifyIcon.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
+        }
+
+        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            NotifyIcon ni = (System.Windows.Forms.NotifyIcon) sender;
+            s.
+            Debug.WriteLine(e.ToString());
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -38,10 +47,10 @@ namespace PiPlex
                 notifyIcon.ShowBalloonTip(5 * 1000, "Error", "Folder does not exist", ToolTipIcon.Error);
                 return;
             }
-            watcher.NotifyFilter = 
-                NotifyFilters.LastAccess | 
-                NotifyFilters.LastWrite | 
-                NotifyFilters.FileName | 
+            watcher.NotifyFilter =
+                NotifyFilters.LastAccess |
+                NotifyFilters.LastWrite |
+                NotifyFilters.FileName |
                 NotifyFilters.DirectoryName;
             watcher.Changed += new FileSystemEventHandler(OnNewFileDownloaded);
             watcher.EnableRaisingEvents = true;
@@ -49,7 +58,6 @@ namespace PiPlex
 
         private void HandleVideoFileType(string path)
         {
-            Logger.Info("PiPlex:HandleVideoFileType", "Calculating video file duration");
             long duration = DurationProvier.GetDurationAsNanoSeconds(path);
             TimeSpan timeSpan = TimeSpan.FromSeconds(duration / DurationProvier.NANO_SECONDS);
 
@@ -87,7 +95,10 @@ namespace PiPlex
             catch (Exception exception)
             {
                 Logger.Error("PiPlex:HandleVideoFileType", "Unable to move file: " + exception.Message);
-            }            
+            }
+
+            //Download subtitles with Filebot
+            FileBot.GetSubtitles(destPath);
         }
 
         private void OnNewFileDownloaded(object source, FileSystemEventArgs e)
@@ -106,13 +117,13 @@ namespace PiPlex
             //MOVE FILE TO PROPER PLEX FOLDER
             HandleVideoFileType(e.FullPath);
 
-            
+
             //UPDATE PLEX LIBRAIRY
             PlexMediaScanner.Update();
 
             //DONE
-            notifyIcon.ShowBalloonTip(5 * 1000, e.Name, "Updated to Plex librairy", ToolTipIcon.Info);
-            Logger.Info("PiPlex:OnNewFileDownloaded", "Updated to Plex librairy");
+            notifyIcon.Tag = e.FullPath;
+            notifyIcon.ShowBalloonTip(5 * 1000, "PiPlex", "Updated to Plex librairy", ToolTipIcon.Info);
         }
 
 
@@ -125,6 +136,9 @@ namespace PiPlex
             }
 
             notifyIcon.ContextMenu = new ContextMenu();
+# if DEBUG
+            notifyIcon.ContextMenu.MenuItems.Add("Code Snippet", this.notifyIcon_CodeSnippet);
+# endif
             notifyIcon.ContextMenu.MenuItems.Add("Settings", this.notifyIcon_OptionSettings);
             notifyIcon.ContextMenu.MenuItems.Add("Logs", this.notifyIcon_OptionLogs);
             notifyIcon.ContextMenu.MenuItems.Add("Quit", this.notifyIcon_OptionsQuit);
@@ -138,7 +152,7 @@ namespace PiPlex
             catch (Exception exception)
             {
                 Logger.Error("PiPlex:FormMain_Load", "Invalid settings: " + exception.Message);
-                notifyIcon.ShowBalloonTip(10 * 1000,"Check PiPlex settings", exception.Message , ToolTipIcon.Warning);
+                notifyIcon.ShowBalloonTip(10 * 1000, "Check PiPlex settings", exception.Message, ToolTipIcon.Warning);
                 return;
             }
             //RUN PLEX MEDIA SERVER
@@ -147,6 +161,11 @@ namespace PiPlex
             string downloadFolderPath = Settings.Default.DonwloadFolderPath;
             InitFileSystemWatcher(downloadFolderPath);
 
+        }
+
+        private void notifyIcon_CodeSnippet(object sender, EventArgs e)
+        {
+            CodeSnippet.Run();
         }
 
         private void notifyIcon_OptionsQuit(object sender, EventArgs e)
