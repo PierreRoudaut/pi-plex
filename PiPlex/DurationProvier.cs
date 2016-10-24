@@ -24,6 +24,11 @@ namespace PiPlex
 
         public const long MOVIE_THRESHOLD = MAX_TV_SHOW_LENGTH * MINUTE * NANO_SECONDS;
 
+        /// <summary>
+        /// Gets the duration of the video type based on duration
+        /// </summary>
+        /// <param name="duration">The duration.</param>
+        /// <returns></returns>
         public static VideoType GetVideoTypeFromDuration(long duration)
         {
             if (duration > 0 && duration < MOVIE_THRESHOLD)
@@ -37,6 +42,12 @@ namespace PiPlex
             return VideoType.UNDEFINED;
         }
 
+
+        /// <summary>
+        /// Gets the duration as nano seconds.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns></returns>
         public static long GetDurationAsNanoSeconds(string filePath)
         {
             Logger.Info("DurationProvier:GetDurationAsNanoSeconds", "Calculating video file duration");

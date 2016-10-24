@@ -27,9 +27,7 @@ namespace PiPlex
 
         private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
         {
-            NotifyIcon ni = (System.Windows.Forms.NotifyIcon) sender;
-            s.
-            Debug.WriteLine(e.ToString());
+            Process.Start(Path.GetDirectoryName(this.notifyIcon.Tag.ToString()));
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -56,7 +54,7 @@ namespace PiPlex
             watcher.EnableRaisingEvents = true;
         }
 
-        private void HandleVideoFileType(string path)
+        private string HandleVideoFileType(string path)
         {
             long duration = DurationProvier.GetDurationAsNanoSeconds(path);
             TimeSpan timeSpan = TimeSpan.FromSeconds(duration / DurationProvier.NANO_SECONDS);
@@ -99,6 +97,7 @@ namespace PiPlex
 
             //Download subtitles with Filebot
             FileBot.GetSubtitles(destPath);
+            return destPath;
         }
 
         private void OnNewFileDownloaded(object source, FileSystemEventArgs e)
@@ -106,7 +105,7 @@ namespace PiPlex
             //If file extension is correct
             if (!Properties.Settings.Default.SupportedFormats.Contains(Path.GetExtension(e.FullPath)))
             {
-                Logger.Warning("PiPlex:OnNewFileDownloaded", "Ignoring file " + e.Name);
+                Logger.Info("PiPlex:OnNewFileDownloaded", "Ignoring file " + e.Name);
                 return;
             }
             else
@@ -115,15 +114,15 @@ namespace PiPlex
             }
 
             //MOVE FILE TO PROPER PLEX FOLDER
-            HandleVideoFileType(e.FullPath);
+            string newFilePath = HandleVideoFileType(e.FullPath);
 
 
             //UPDATE PLEX LIBRAIRY
             PlexMediaScanner.Update();
 
             //DONE
-            notifyIcon.Tag = e.FullPath;
-            notifyIcon.ShowBalloonTip(5 * 1000, "PiPlex", "Updated to Plex librairy", ToolTipIcon.Info);
+            notifyIcon.Tag = newFilePath;
+            notifyIcon.ShowBalloonTip(5 * 1000, "PiPlex", newFilePath, ToolTipIcon.Info);
         }
 
 
