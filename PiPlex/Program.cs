@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace PiPlex
 {
@@ -14,9 +15,20 @@ namespace PiPlex
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            string[] args = Environment.GetCommandLineArgs();
+
+            switch (args.Length)
+            {
+                case 1:
+                    //Directdownload
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new FormMain());
+                    break;
+                case 2:
+                    break;
+                    //CLI stuff
+            }
         }
     }
 }
