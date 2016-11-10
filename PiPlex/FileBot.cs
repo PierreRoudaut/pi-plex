@@ -36,7 +36,7 @@ namespace PiPlex
                 var fileBotExePath = @"C:\Program Files\FileBot\filebot.exe";
                 Process process = new Process();
                 process.StartInfo.FileName = fileBotExePath;
-                process.StartInfo.Arguments = "-get-subtitles " + path;
+                process.StartInfo.Arguments = "-get-subtitles " + path.Replace(@"\\",@"\");
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
@@ -52,6 +52,7 @@ namespace PiPlex
                 //If error output is not empty
                 if (!String.IsNullOrEmpty(error))
                 {
+                    Debug.WriteLine(error);
                     Logger.Warning("FileBot:GetSubtitles", "No subtitles found for: " + Path.GetFileName(path));
                     return false;
                 }

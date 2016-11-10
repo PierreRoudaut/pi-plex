@@ -131,6 +131,9 @@ namespace PiPlex
             return null;
         }
 
+        /// <summary>
+        /// Provides the default settings.
+        /// </summary>
         public static void ProvideDefaultSettings()
         {
             Settings.Default.DonwloadFolderPath = DownloadFolder;

@@ -21,7 +21,7 @@ namespace PiPlex
             switch (args.Length)
             {
                 case 1:
-                    //Directdownload
+                    //Direct download
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new FormMain());
@@ -29,10 +29,9 @@ namespace PiPlex
                 default:
                     //CLI stuff
                     var options = new CliArguments();
-                    if (CommandLine.Parser.Default.ParseArguments(args, options))
+                    if (Parser.Default.ParseArguments(args, options))
                     {
-                        Console.ReadKey();
-                        Application.Run(new CliAppContext());
+                        Application.Run(new CliAppContext(options));
                     }
                     else
                     {
