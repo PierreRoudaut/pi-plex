@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PiPlex.Properties;
 
 namespace PiPlex
 {
+    using System.IO;
+
     /// <summary>
     /// Guesses default PiPlex settings
     /// </summary>
@@ -35,7 +38,8 @@ namespace PiPlex
         {
             get
             {
-                return KnownFolders.GetPath(KnownFolder.Videos) + @"\MOVIES";
+                var plexMovieFolder = KnownFolders.GetPath(KnownFolder.Videos) + @"\MOVIES";
+                return Directory.Exists(plexMovieFolder) ? plexMovieFolder : null;
             }            
         }
 
@@ -49,7 +53,8 @@ namespace PiPlex
         {
             get
             {
-                return KnownFolders.GetPath(KnownFolder.Videos) + @"\TV SHOWS";
+                var plexTvShowFolder = KnownFolders.GetPath(KnownFolder.Videos) + @"\TV SHOWS";
+                return Directory.Exists(plexTvShowFolder) ? plexTvShowFolder : null;
             }
         }
 
@@ -63,7 +68,7 @@ namespace PiPlex
         {
             get
             {
-                return "";
+                return LocateInstalledApplication("Plex Media Scanner.exe");
             }     
         }
 
@@ -77,7 +82,7 @@ namespace PiPlex
         {
             get
             {
-                return "";
+                return LocateInstalledApplication("Plex Media Server.exe");
             }
         }
 
@@ -91,14 +96,50 @@ namespace PiPlex
         {
             get
             {
-                return "";
+                return LocateInstalledApplication("filebot.exe");
             }
         }
 
-        private static string GetProgramPath(string program)
+        /// <summary>
+        /// Locates an installed application in Program Files and Program Files(X86)
+        /// </summary>
+        /// <param name="applicationExecutable">The application executable.</param>
+        /// <returns></returns>
+        private static string LocateInstalledApplication(string applicationExecutable)
         {
-            var files = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), program, System.IO.SearchOption.AllDirectories);
-            return files.Any() ? files.First() : null;
+            //search in Program Files
+            var programFiles = Environment.GetEnvironmentVariable("ProgramW6432");
+            if (programFiles != null)
+            {
+                var applicationPath = Directory.GetFiles(programFiles, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                if (applicationPath != null)
+                {
+                    return applicationPath;
+                }
+            }
+
+            //search in Program Files x86
+            var programFilesX86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
+            if (programFilesX86 != null)
+            {
+                var applicationPath = Directory.GetFiles(programFilesX86, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                if (applicationPath != null)
+                {
+                    return applicationPath;
+                }
+            }
+            return null;
+        }
+
+        public static void ProvideDefaultSettings()
+        {
+            Settings.Default.DonwloadFolderPath = DownloadFolder;
+            Settings.Default.PlexMovieFolderPath = PlexMovieFolder;
+            Settings.Default.PlexTvShowFolderPath = PlexTvShowFolder;
+            Settings.Default.PlexMediaServerPath = PlexMediaServerPath;
+            Settings.Default.PlexMediaScannerPath = PlexMediaScannerPath;
+            Settings.Default.FileBotPath = FileBotPath;
+            Settings.Default.Save();
         }
     }
 }

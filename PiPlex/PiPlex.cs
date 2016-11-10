@@ -164,7 +164,13 @@ namespace PiPlex
             Logger.Info("PiPlex:FormMain_Load", "Loading Piplex");
             try
             {
+                if (SettingsHelper.SettingsAreBlank)
+                {
+                    DefaultSettingsProvider.ProvideDefaultSettings();
+                }
                 SettingsForm.ValidateSettings();
+
+                
                 Logger.Info("PiPlex:FormMain_Load", "Settings are OK");
             }
             catch (Exception exception)
@@ -176,8 +182,7 @@ namespace PiPlex
             //RUN PLEX MEDIA SERVER
             PlexMediaServer.Run();
 
-            string downloadFolderPath = Settings.Default.DonwloadFolderPath;
-            InitFileSystemWatcher(downloadFolderPath);
+            InitFileSystemWatcher(Settings.Default.DonwloadFolderPath);
 
         }
 

@@ -126,6 +126,7 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsHelper.cs" />
     <EmbeddedResource Include="PiPlex.resx">
       <DependentUpon>PiPlex.cs</DependentUpon>
     </EmbeddedResource>

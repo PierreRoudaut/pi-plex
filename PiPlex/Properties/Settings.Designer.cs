@@ -49,7 +49,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Scanner.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PlexMediaScannerPath {
             get {
                 return ((string)(this["PlexMediaScannerPath"]));
@@ -73,19 +73,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://127.0.0.1:32400/web/")]
-        public string PlexMediaManagerUrl {
-            get {
-                return ((string)(this["PlexMediaManagerUrl"]));
-            }
-            set {
-                this["PlexMediaManagerUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PlexMediaServerPath {
             get {
                 return ((string)(this["PlexMediaServerPath"]));
@@ -124,7 +112,7 @@ namespace PiPlex.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\FileBot\\filebot.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FileBotPath {
             get {
                 return ((string)(this["FileBotPath"]));

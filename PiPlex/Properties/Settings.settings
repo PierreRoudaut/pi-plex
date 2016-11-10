@@ -9,16 +9,13 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PlexMediaScannerPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DonwloadFolderPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="PlexMediaManagerUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://127.0.0.1:32400/web/</Value>
-    </Setting>
     <Setting Name="PlexMediaServerPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Server.exe</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SupportedFormats" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -32,7 +29,7 @@
       <Value Profile="(Default)">PiPlex.log</Value>
     </Setting>
     <Setting Name="FileBotPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files\FileBot\filebot.exe</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

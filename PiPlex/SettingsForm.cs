@@ -11,12 +11,15 @@ using System.Windows.Forms;
 
 namespace PiPlex
 {
+    using PiPlex.Properties;
+
     public partial class SettingsForm : Form
     {
         public SettingsForm()
         {
             InitializeComponent();
         }
+
 
         public static bool ValidateSettings()
         {
@@ -27,12 +30,16 @@ namespace PiPlex
             if (!Directory.Exists(Properties.Settings.Default.DonwloadFolderPath))
                 throw new IOException("Please specify a valid download directory to bind in the settings and restart PiPlex");
             if (!File.Exists(Properties.Settings.Default.PlexMediaScannerPath))
-                throw new IOException("Please specify a valid path for Plex Media Scanner in the settings and restart Piplex");
+                throw new IOException("Please specify a valid .exe path for Plex Media Scanner in the settings and restart Piplex");
             if (!File.Exists(Properties.Settings.Default.PlexMediaServerPath))
-                throw new IOException("Please specify a valid path for Plex Media Server in the settings and restart Piplex");
+                throw new IOException("Please specify a valid .exe path for Plex Media Server in the settings and restart PiPlex");
+            if (!File.Exists(Properties.Settings.Default.FileBotPath))
+                throw new IOException("Please specify a valid .exe path for Filebot in the settings and restart PiPlex");
+
             return true;
         }
 
+        //TODO: refactor for agnostic properties iteration
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -41,17 +48,18 @@ namespace PiPlex
             this.openFileDialog.Multiselect = false;
             this.openFileDialog.Filter = "Executable Files (.exe)|*.exe";
 
-            this.plexMovieFolderTextBox.Text = Properties.Settings.Default.PlexMovieFolderPath;
-            this.plexTvShowFolderTextBox.Text = Properties.Settings.Default.PlexTvShowFolderPath;
-            this.downloadFolderTextBox.Text = Properties.Settings.Default.DonwloadFolderPath;
-            this.plexMediaScannerTextBox.Text = Properties.Settings.Default.PlexMediaScannerPath;
-            this.plexMediaServerTextBox.Text = Properties.Settings.Default.PlexMediaServerPath;
+            this.plexMovieFolderTextBox.Text = Settings.Default.PlexMovieFolderPath;
+            this.plexTvShowFolderTextBox.Text = Settings.Default.PlexTvShowFolderPath;
+            this.downloadFolderTextBox.Text = Settings.Default.DonwloadFolderPath;
+            this.plexMediaScannerTextBox.Text = Settings.Default.PlexMediaScannerPath;
+            this.plexMediaServerTextBox.Text = Settings.Default.PlexMediaServerPath;
+            this.filebotPathTextBox.Text = Settings.Default.FileBotPath;
         }
-
     
+        //TODO: refactor only one click handler
         private void downloadFolderButton_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog.SelectedPath = Properties.Settings.Default.DonwloadFolderPath;
+            folderBrowserDialog.SelectedPath = Settings.Default.DonwloadFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -59,13 +67,13 @@ namespace PiPlex
                 this.downloadFolderTextBox.Text = folderBrowserDialog.SelectedPath;
 
                 // Saved in settings
-                Properties.Settings.Default.DonwloadFolderPath = folderBrowserDialog.SelectedPath;
-                Properties.Settings.Default.Save();
+                Settings.Default.DonwloadFolderPath = folderBrowserDialog.SelectedPath;
+                Settings.Default.Save();
             }
         }
         private void plexTvShowFolderButton_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexTvShowFolderPath;
+            folderBrowserDialog.SelectedPath = Settings.Default.PlexTvShowFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -73,13 +81,13 @@ namespace PiPlex
                 this.plexTvShowFolderTextBox.Text = folderBrowserDialog.SelectedPath;
 
                 // Saved in settings
-                Properties.Settings.Default.PlexTvShowFolderPath = folderBrowserDialog.SelectedPath;
-                Properties.Settings.Default.Save();
+                Settings.Default.PlexTvShowFolderPath = folderBrowserDialog.SelectedPath;
+                Settings.Default.Save();
             }
         }
         private void plexMediaScannerButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.PlexMediaScannerPath);
+            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaScannerPath);
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -87,13 +95,13 @@ namespace PiPlex
                 this.plexMediaScannerTextBox.Text = openFileDialog.FileName;
 
                 // Saved in settings
-                Properties.Settings.Default.PlexMediaScannerPath = openFileDialog.FileName;
-                Properties.Settings.Default.Save();
+                Settings.Default.PlexMediaScannerPath = openFileDialog.FileName;
+                Settings.Default.Save();
             }
         }
         private void plexMovieFolderButton_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog.SelectedPath = Properties.Settings.Default.PlexMovieFolderPath;
+            folderBrowserDialog.SelectedPath = Settings.Default.PlexMovieFolderPath;
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -101,13 +109,13 @@ namespace PiPlex
                 this.plexMovieFolderTextBox.Text = folderBrowserDialog.SelectedPath;
 
                 // Saved in settings
-                Properties.Settings.Default.PlexMovieFolderPath = folderBrowserDialog.SelectedPath;
-                Properties.Settings.Default.Save();
+                Settings.Default.PlexMovieFolderPath = folderBrowserDialog.SelectedPath;
+                Settings.Default.Save();
             }
         }
         private void plexMediaServerButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.PlexMediaServerPath);
+            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaServerPath);
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -115,14 +123,13 @@ namespace PiPlex
                 this.plexMediaServerTextBox.Text = openFileDialog.FileName;
 
                 // Saved in settings
-                Properties.Settings.Default.PlexMediaServerPath = openFileDialog.FileName;
-                Properties.Settings.Default.Save();
+                Settings.Default.PlexMediaServerPath = openFileDialog.FileName;
+                Settings.Default.Save();
             }
         }
-
         private void filebotButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.FileBotPath);
+            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.FileBotPath);
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -130,8 +137,8 @@ namespace PiPlex
                 this.filebotPathTextBox.Text = openFileDialog.FileName;
 
                 // Saved in settings
-                Properties.Settings.Default.FileBotPath = openFileDialog.FileName;
-                Properties.Settings.Default.Save();
+                Settings.Default.FileBotPath = openFileDialog.FileName;
+                Settings.Default.Save();
             }
         }
     }
