@@ -103,6 +103,37 @@ namespace PiPlex
             return;
         }
 
+        /// <summary>
+        /// Locates an installed application in Program Files and Program Files(X86)
+        /// </summary>
+        /// <param name="applicationExecutable">The application executable.</param>
+        /// <returns></returns>
+        public static string LocateInstalledApplication(string applicationExecutable)
+        {
+            //search in Program Files
+            var programFiles = Environment.GetEnvironmentVariable("ProgramW6432");
+            if (programFiles != null)
+            {
+                var applicationPath = Directory.GetFiles(programFiles, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                if (applicationPath != null)
+                {
+                    return applicationPath;
+                }
+            }
+
+            //search in Program Files x86
+            var programFilesX86  = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
+            if (programFilesX86 != null)
+            {
+                var applicationPath = Directory.GetFiles(programFilesX86, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                if (applicationPath != null)
+                {
+                    return applicationPath;
+                }   
+            }
+            return null;
+        }
+
         public static string ProgramFilesx86()
         {
             if (8 == IntPtr.Size
@@ -116,21 +147,8 @@ namespace PiPlex
 
         public static bool Run()
         {
-            var downloadFolder = DefaultSettingsProvider.DownloadFolder;
-            var plexMovieFolder = DefaultSettingsProvider.PlexMovieFolder;
-            var plexTvShowFolder = DefaultSettingsProvider.PlexTvShowFolder;
-
-            var deee = Environment.GetEnvironmentVariable("ProgramW6432");
-            var geee = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var feee = Environment.ExpandEnvironmentVariables("%ProgramFiles%");
-
-
-
-            //var d = IsApplicationInstalled("Plex Media Server");
-            string path = null;
-            //func("Filebot.exe");
-            func("filebot.exe");
-            //func("Plex Media Server.exe");
+            var pms = LocateInstalledApplication("Plex Media Server.exe");
+            var fb = LocateInstalledApplication("filebot.exe");
             return true;
         }
     }
