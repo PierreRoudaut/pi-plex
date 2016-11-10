@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PiPlex
 {
-    class PlexMediaScanner
+    public class PlexMediaScanner
     {
         public static bool Update()
         {

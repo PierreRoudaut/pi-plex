@@ -31,5 +31,8 @@
     <Setting Name="LogFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">PiPlex.log</Value>
     </Setting>
+    <Setting Name="FileBotPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\FileBot\filebot.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

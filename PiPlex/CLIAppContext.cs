@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace PiPlex
+﻿namespace PiPlex
 {
-    public class CLIAppContext : ApplicationContext
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// The cli app context.
+    /// </summary>
+    public class CliAppContext : ApplicationContext
     {
     }
 }

@@ -1,20 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.IO;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FileBot.cs" company="something">
+// Something
+// </copyright>
+// <summary>
+//   Wrapper class for filebot.exe CLI manipulation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
+// ReSharper disable All
 namespace PiPlex
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Wrapper class for filebot.exe CLI manipulation
     /// </summary>
     public class FileBot
     {
         /// <summary>
-        /// Gets the subtitles form filebot subtitles provider (OpenSubtitles.org)
+        /// Gets the subtitles form filebot subtitles provider
         /// </summary>
         /// <param name="path">The path of the video file</param>
         /// <returns>The result of the download operation</returns>

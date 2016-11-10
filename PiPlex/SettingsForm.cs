@@ -119,5 +119,20 @@ namespace PiPlex
                 Properties.Settings.Default.Save();
             }
         }
+
+        private void filebotButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.FileBotPath);
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // UI
+                this.filebotPathTextBox.Text = openFileDialog.FileName;
+
+                // Saved in settings
+                Properties.Settings.Default.FileBotPath = openFileDialog.FileName;
+                Properties.Settings.Default.Save();
+            }
+        }
     }
 }

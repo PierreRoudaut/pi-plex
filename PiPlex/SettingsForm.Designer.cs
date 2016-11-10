@@ -59,6 +59,9 @@
             this.plexMediaServerTextBox = new System.Windows.Forms.TextBox();
             this.plexMediaServerLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.filebotPathLabel = new System.Windows.Forms.Label();
+            this.filebotPathTextBox = new System.Windows.Forms.TextBox();
+            this.filebotButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // groupBoxFolders
@@ -337,11 +340,41 @@
             // 
             this.openFileDialog.Title = "Select file";
             // 
+            // filebotPathLabel
+            // 
+            this.filebotPathLabel.AutoSize = true;
+            this.filebotPathLabel.Location = new System.Drawing.Point(12, 186);
+            this.filebotPathLabel.Name = "filebotPathLabel";
+            this.filebotPathLabel.Size = new System.Drawing.Size(50, 17);
+            this.filebotPathLabel.TabIndex = 15;
+            this.filebotPathLabel.Text = "Filebot";
+            // 
+            // filebotPathTextBox
+            // 
+            this.filebotPathTextBox.Location = new System.Drawing.Point(169, 181);
+            this.filebotPathTextBox.Name = "filebotPathTextBox";
+            this.filebotPathTextBox.ReadOnly = true;
+            this.filebotPathTextBox.Size = new System.Drawing.Size(376, 22);
+            this.filebotPathTextBox.TabIndex = 16;
+            // 
+            // filebotButton
+            // 
+            this.filebotButton.Location = new System.Drawing.Point(551, 180);
+            this.filebotButton.Name = "filebotButton";
+            this.filebotButton.Size = new System.Drawing.Size(54, 23);
+            this.filebotButton.TabIndex = 17;
+            this.filebotButton.Text = "...";
+            this.filebotButton.UseVisualStyleBackColor = true;
+            this.filebotButton.Click += new System.EventHandler(this.filebotButton_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 181);
+            this.ClientSize = new System.Drawing.Size(627, 216);
+            this.Controls.Add(this.filebotButton);
+            this.Controls.Add(this.filebotPathTextBox);
+            this.Controls.Add(this.filebotPathLabel);
             this.Controls.Add(this.plexMediaServerButton);
             this.Controls.Add(this.plexMediaServerTextBox);
             this.Controls.Add(this.plexMediaServerLabel);
@@ -398,5 +431,8 @@
         private System.Windows.Forms.TextBox plexMediaServerTextBox;
         private System.Windows.Forms.Label plexMediaServerLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label filebotPathLabel;
+        private System.Windows.Forms.TextBox filebotPathTextBox;
+        private System.Windows.Forms.Button filebotButton;
     }
 }

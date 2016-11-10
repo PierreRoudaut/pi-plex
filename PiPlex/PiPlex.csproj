@@ -65,6 +65,10 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
@@ -98,8 +102,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLIAppContext.cs" />
+    <Compile Include="CliAppContext.cs" />
+    <Compile Include="CliArguments.cs" />
     <Compile Include="CodeSnippet.cs" />
+    <Compile Include="DefaultSettingsProvider.cs" />
     <Compile Include="DurationProvier.cs" />
     <Compile Include="FileBot.cs" />
     <Compile Include="Logger.cs" />

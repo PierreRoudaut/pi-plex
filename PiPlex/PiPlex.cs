@@ -20,16 +20,25 @@ namespace PiPlex
     {
         public FormMain()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.WindowState = FormWindowState.Minimized;
-            notifyIcon.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
+            this.notifyIcon.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
         }
 
+        /// <summary>
+        /// Handles the BalloonTipClicked event of the notifyIcon control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
         {
             Process.Start(Path.GetDirectoryName(this.notifyIcon.Tag.ToString()));
         }
 
+        /// <summary>
+        /// Initializes the file system watcher
+        /// </summary>
+        /// <param name="path">The path.</param>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         private void InitFileSystemWatcher(string path)
         {
@@ -54,6 +63,11 @@ namespace PiPlex
             watcher.EnableRaisingEvents = true;
         }
 
+        /// <summary>
+        /// Handles the type of the video file.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
         private string HandleVideoFileType(string path)
         {
             long duration = DurationProvier.GetDurationAsNanoSeconds(path);
@@ -100,6 +114,11 @@ namespace PiPlex
             return destPath;
         }
 
+        /// <summary>
+        /// Called when [new file downloaded].
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="e">The <see cref="FileSystemEventArgs"/> instance containing the event data.</param>
         private void OnNewFileDownloaded(object source, FileSystemEventArgs e)
         {
             //If file extension is correct
@@ -113,14 +132,14 @@ namespace PiPlex
                 Logger.Info("PiPlex:OnNewFileDownloaded", "Handling file " + e.Name);
             }
 
-            //MOVE FILE TO PROPER PLEX FOLDER
+            // MOVE FILE TO PROPER PLEX FOLDER
             string newFilePath = HandleVideoFileType(e.FullPath);
 
 
-            //UPDATE PLEX LIBRAIRY
+            // UPDATE PLEX LIBRAIRY
             PlexMediaScanner.Update();
 
-            //DONE
+            // DONE
             notifyIcon.Tag = newFilePath;
             notifyIcon.ShowBalloonTip(5 * 1000, "PiPlex", newFilePath, ToolTipIcon.Info);
         }
@@ -162,17 +181,31 @@ namespace PiPlex
 
         }
 
+        /// <summary>
+        /// Handles the CodeSnippet event of the notifyIcon control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void notifyIcon_CodeSnippet(object sender, EventArgs e)
         {
             CodeSnippet.Run();
         }
 
+        /// <summary>
+        /// Handles the OptionsQuit event of the notifyIcon control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void notifyIcon_OptionsQuit(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-
+        /// <summary>
+        /// Handles the OptionLogs event of the notifyIcon control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void notifyIcon_OptionLogs(object sender, EventArgs e)
         {
             try
@@ -188,13 +221,22 @@ namespace PiPlex
             }
         }
 
-
+        /// <summary>
+        /// Handles the OptionSettings event of the notifyIcon control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void notifyIcon_OptionSettings(object sender, EventArgs e)
         {
             SettingsForm f = new SettingsForm();
             f.Show();
         }
 
+        /// <summary>
+        /// Hide the Main form when loaded
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void FormMain_Shown(object sender, EventArgs e)
         {
             this.Hide();

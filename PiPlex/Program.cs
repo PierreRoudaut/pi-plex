@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using CommandLine;
 
 namespace PiPlex
 {
@@ -13,7 +14,7 @@ namespace PiPlex
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             string[] args = Environment.GetCommandLineArgs();
 
@@ -25,9 +26,19 @@ namespace PiPlex
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new FormMain());
                     break;
-                case 2:
-                    break;
+                default:
                     //CLI stuff
+                    var options = new CliArguments();
+                    if (CommandLine.Parser.Default.ParseArguments(args, options))
+                    {
+                        Console.ReadKey();
+                        Application.Run(new CliAppContext());
+                    }
+                    else
+                    {
+                        
+                    }
+                    break;
             }
         }
     }

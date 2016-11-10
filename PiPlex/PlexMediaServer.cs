@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PiPlex
 {
-    class PlexMediaServer
+    public class PlexMediaServer
     {
         public static bool Run()
         {
