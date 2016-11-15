@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using CommandLine;
@@ -17,6 +14,7 @@ namespace PiPlex
         private static void Main()
         {
             string[] args = Environment.GetCommandLineArgs();
+            var options = new CliArguments();
 
             switch (args.Length)
             {
@@ -26,17 +24,17 @@ namespace PiPlex
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new FormMain());
                     break;
-                default:
+                case 3:
                     //CLI stuff
-                    var options = new CliArguments();
                     if (Parser.Default.ParseArguments(args, options))
                     {
                         Application.Run(new CliAppContext(options));
                     }
-                    else
-                    {
-                        
-                    }
+                    break;
+                default:
+                    Debug.Write(options.GetUsage());
+                    Console.Write(options.GetUsage());
+                    Environment.Exit(1);
                     break;
             }
         }

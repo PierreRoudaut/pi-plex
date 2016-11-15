@@ -1,8 +1,8 @@
 ﻿namespace PiPlex
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
-    using System.Net.Configuration;
     using System.Windows.Forms;
 
     using PiPlex.Properties;
@@ -25,6 +25,7 @@
             {
                 Directory.Delete(destPath, true);
             }
+            //todo: check sourcePath exist before moving
             Directory.Move(sourcePath, destPath);
             return destPath;
         }
@@ -36,6 +37,7 @@
         private void Import(string inputFolder)
         {
             var destPath = this.MoveTargetFolder(inputFolder);
+            Debug.WriteLine(destPath);
             FileBot.GetSubtitles(destPath);
             PlexMediaScanner.Update();
         }

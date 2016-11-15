@@ -36,7 +36,7 @@ namespace PiPlex
                 var fileBotExePath = @"C:\Program Files\FileBot\filebot.exe";
                 Process process = new Process();
                 process.StartInfo.FileName = fileBotExePath;
-                process.StartInfo.Arguments = "-get-subtitles " + path.Replace(@"\\",@"\");
+                process.StartInfo.Arguments = "-get-subtitles " + '"' + path + '"';
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
