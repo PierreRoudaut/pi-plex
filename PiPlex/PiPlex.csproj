@@ -24,12 +24,15 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>plex.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CFD2DC62-CD4C-48E6-83BE-19A09F37B392}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PiPlex</RootNamespace>
     <AssemblyName>PiPlex</AssemblyName>
@@ -75,6 +78,7 @@
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
@@ -113,6 +117,7 @@
     <Compile Include="CodeSnippet.cs" />
     <Compile Include="DefaultSettingsProvider.cs" />
     <Compile Include="DurationProvier.cs" />
+    <Compile Include="EmailNotifier.cs" />
     <Compile Include="FileBot.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="PiPlex.cs">
@@ -165,8 +170,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plex.png" />
+    <EmbeddedResource Include="Resources\plex.png" />
     <None Include="Resources\spin.gif" />
+    <Content Include="plex.ico" />
     <Content Include="spin.gif" />
   </ItemGroup>
   <ItemGroup>

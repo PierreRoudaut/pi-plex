@@ -18,6 +18,8 @@ namespace PiPlex
     using System.Text;
     using System.Threading.Tasks;
 
+    using PiPlex.Properties;
+
     /// <summary>
     /// Wrapper class for filebot.exe CLI manipulation
     /// </summary>
@@ -32,10 +34,8 @@ namespace PiPlex
         {
             try
             {
-                //TODO: put fileBotExePath in settings
-                var fileBotExePath = @"C:\Program Files\FileBot\filebot.exe";
                 Process process = new Process();
-                process.StartInfo.FileName = fileBotExePath;
+                process.StartInfo.FileName = Settings.Default.FileBotPath;
                 process.StartInfo.Arguments = "-get-subtitles " + '"' + path + '"';
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.StartInfo.UseShellExecute = false;

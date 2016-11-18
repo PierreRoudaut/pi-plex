@@ -121,5 +121,29 @@ namespace PiPlex.Properties {
                 this["FileBotPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("piplex.notifier@gmail.com")]
+        public string NotifierEmail {
+            get {
+                return ((string)(this["NotifierEmail"]));
+            }
+            set {
+                this["NotifierEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("piplexapp")]
+        public string NotifierPassword {
+            get {
+                return ((string)(this["NotifierPassword"]));
+            }
+            set {
+                this["NotifierPassword"] = value;
+            }
+        }
     }
 }

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PiPlex
@@ -23,17 +16,17 @@ namespace PiPlex
 
         public static bool ValidateSettings()
         {
-            if (!Directory.Exists(Properties.Settings.Default.PlexMovieFolderPath))
+            if (!Directory.Exists(Settings.Default.PlexMovieFolderPath))
                 throw new IOException("Please specify a valid Plex Movie directory in the settings and restart PiPlex");
-            if (!Directory.Exists(Properties.Settings.Default.PlexTvShowFolderPath))
+            if (!Directory.Exists(Settings.Default.PlexTvShowFolderPath))
                 throw new IOException("Please specify a valid Plex TvShow directory in the settings and restart PiPlex");
-            if (!Directory.Exists(Properties.Settings.Default.DonwloadFolderPath))
+            if (!Directory.Exists(Settings.Default.DonwloadFolderPath))
                 throw new IOException("Please specify a valid download directory to bind in the settings and restart PiPlex");
-            if (!File.Exists(Properties.Settings.Default.PlexMediaScannerPath))
+            if (!File.Exists(Settings.Default.PlexMediaScannerPath))
                 throw new IOException("Please specify a valid .exe path for Plex Media Scanner in the settings and restart Piplex");
-            if (!File.Exists(Properties.Settings.Default.PlexMediaServerPath))
+            if (!File.Exists(Settings.Default.PlexMediaServerPath))
                 throw new IOException("Please specify a valid .exe path for Plex Media Server in the settings and restart PiPlex");
-            if (!File.Exists(Properties.Settings.Default.FileBotPath))
+            if (!File.Exists(Settings.Default.FileBotPath))
                 throw new IOException("Please specify a valid .exe path for Filebot in the settings and restart PiPlex");
 
             return true;

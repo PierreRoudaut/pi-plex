@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Diagnostics;
 using CommandLine;
 
 namespace PiPlex
@@ -20,6 +19,7 @@ namespace PiPlex
             {
                 case 1:
                     //Direct download
+                    Logger.Info("Program:Main", "Starting PiPlex Watcher");
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new FormMain());
@@ -28,11 +28,11 @@ namespace PiPlex
                     //CLI stuff
                     if (Parser.Default.ParseArguments(args, options))
                     {
+                        Logger.Info("Program:Main", "Starting PiPlex CLI");
                         Application.Run(new CliAppContext(options));
                     }
                     break;
                 default:
-                    Debug.Write(options.GetUsage());
                     Console.Write(options.GetUsage());
                     Environment.Exit(1);
                     break;

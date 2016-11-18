@@ -31,5 +31,11 @@
     <Setting Name="FileBotPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="NotifierEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">piplex.notifier@gmail.com</Value>
+    </Setting>
+    <Setting Name="NotifierPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">piplexapp</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
