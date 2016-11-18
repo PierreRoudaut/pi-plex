@@ -13,10 +13,11 @@ After the file has been moved, PiPlex will update your Plex Media library, launc
 On your phone, swipe down to refresh your Plex app and start watching.
 
 ## Installation
-Head to **[release](https://github.com/PierreRoudaut/pi-plex/releases)**, download and install the latest version of: 
+Head to the **[latest release](https://github.com/PierreRoudaut/pi-plex/releases/latest)**, download and install : 
 ```
 PiPlexInstaller.msi
 ```
+And carefully read the **configuration** section for proper setup of the version
 
 ## Author
 
@@ -28,10 +29,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Todo
 
-* Write unit test
-* Handle (.zip | .rar) large video files
+* Write more unit test
+* Handle (.zip | .rar) large compressed video files
 * If the video file is a TV Show, move it to the appropriate folder of the show and the appropriate season subfolder
-* Search for subtitles
 
 ## Note
 
