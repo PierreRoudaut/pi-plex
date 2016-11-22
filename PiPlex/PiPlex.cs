@@ -168,15 +168,12 @@ namespace PiPlex
                 {
                     DefaultSettingsProvider.ProvideDefaultSettings();
                 }
-                SettingsForm.ValidateSettings();
-
-                
-                Logger.Info("PiPlex:FormMain_Load", "Settings are OK");
+                SettingsForm.AssertSettings();                
             }
             catch (Exception exception)
             {
                 Logger.Error("PiPlex:FormMain_Load", "Invalid settings: " + exception.Message);
-                notifyIcon.ShowBalloonTip(10 * 1000, "Check PiPlex settings", exception.Message, ToolTipIcon.Warning);
+                notifyIcon.ShowBalloonTip(10 * 1000, "Check settings and restart PiPlex", exception.Message, ToolTipIcon.Warning);
                 return;
             }
             //RUN PLEX MEDIA SERVER

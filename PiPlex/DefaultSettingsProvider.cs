@@ -5,6 +5,7 @@ using PiPlex.Properties;
 
 namespace PiPlex
 {
+    using System.Collections.Generic;
     using System.IO;
 
     /// <summary>
@@ -98,6 +99,31 @@ namespace PiPlex
             }
         }
 
+
+        /// <summary>
+        /// Push recursively all the files from a given root directory
+        /// </summary>
+        /// <param name="path">The path of the iteration</param>
+        /// <param name="files">The reference to the list of files</param>
+        private static void RecAddFilesFromPath(string path, IList<string> files)
+        {
+            try
+            {
+                Directory.GetFiles(path)
+                    .ToList()
+                    .ForEach(s => files.Add(s));
+
+                Directory.GetDirectories(path)
+                    .ToList()
+                    .ForEach(s => RecAddFilesFromPath(s, files));
+            }
+            catch (UnauthorizedAccessException)
+            {
+                //ignoring unauthorized
+            }
+        }
+        
+
         /// <summary>
         /// Locates an installed application in Program Files and Program Files(X86)
         /// </summary>
@@ -105,22 +131,27 @@ namespace PiPlex
         /// <returns></returns>
         private static string LocateInstalledApplication(string applicationExecutable)
         {
+            var files = new List<String>();
+
             //search in Program Files
             var programFiles = Environment.GetEnvironmentVariable("ProgramW6432");
             if (programFiles != null)
             {
-                var applicationPath = Directory.GetFiles(programFiles, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                RecAddFilesFromPath(programFiles, files);
+                var applicationPath = files.FirstOrDefault(f => f.EndsWith(applicationExecutable));
                 if (applicationPath != null)
                 {
                     return applicationPath;
                 }
             }
+            files.Clear();
 
             //search in Program Files x86
             var programFilesX86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
             if (programFilesX86 != null)
             {
-                var applicationPath = Directory.GetFiles(programFilesX86, applicationExecutable, SearchOption.AllDirectories).FirstOrDefault();
+                RecAddFilesFromPath(programFilesX86, files);
+                var applicationPath = files.FirstOrDefault(f => f.EndsWith(applicationExecutable));
                 if (applicationPath != null)
                 {
                     return applicationPath;

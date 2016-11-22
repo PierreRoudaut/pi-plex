@@ -14,22 +14,21 @@ namespace PiPlex
         }
 
 
-        public static bool ValidateSettings()
+        public static void AssertSettings()
         {
             if (!Directory.Exists(Settings.Default.PlexMovieFolderPath))
-                throw new IOException("Please specify a valid Plex Movie directory in the settings and restart PiPlex");
+                throw new IOException("Plex Movie folder does not exist");
             if (!Directory.Exists(Settings.Default.PlexTvShowFolderPath))
-                throw new IOException("Please specify a valid Plex TvShow directory in the settings and restart PiPlex");
+                throw new IOException("Plex TV Show folder does not exist");
             if (!Directory.Exists(Settings.Default.DonwloadFolderPath))
-                throw new IOException("Please specify a valid download directory to bind in the settings and restart PiPlex");
+                throw new IOException("Download folder is not set");
             if (!File.Exists(Settings.Default.PlexMediaScannerPath))
-                throw new IOException("Please specify a valid .exe path for Plex Media Scanner in the settings and restart Piplex");
+                throw new IOException("PlexMediaScanner.exe does not exist");
             if (!File.Exists(Settings.Default.PlexMediaServerPath))
-                throw new IOException("Please specify a valid .exe path for Plex Media Server in the settings and restart PiPlex");
+                throw new IOException("PlexMediaServer.exe does not exist");
             if (!File.Exists(Settings.Default.FileBotPath))
-                throw new IOException("Please specify a valid .exe path for Filebot in the settings and restart PiPlex");
-
-            return true;
+                throw new IOException("Filebot.exe does not exist");
+            Logger.Info("SettingsForm:AssertSettings", "Settings are OK");
         }
 
         //TODO: refactor for agnostic properties iteration
@@ -80,7 +79,10 @@ namespace PiPlex
         }
         private void plexMediaScannerButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaScannerPath);
+            if (Directory.Exists(Path.GetDirectoryName(Settings.Default.PlexMediaScannerPath)))
+            {
+                openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaScannerPath);
+            }
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -90,7 +92,7 @@ namespace PiPlex
                 // Saved in settings
                 Settings.Default.PlexMediaScannerPath = openFileDialog.FileName;
                 Settings.Default.Save();
-            }
+            } 
         }
         private void plexMovieFolderButton_Click(object sender, EventArgs e)
         {
@@ -108,7 +110,10 @@ namespace PiPlex
         }
         private void plexMediaServerButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaServerPath);
+            if (Directory.Exists(Path.GetDirectoryName(Settings.Default.PlexMediaServerPath)))
+            {
+                openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.PlexMediaServerPath);
+            }
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -122,7 +127,10 @@ namespace PiPlex
         }
         private void filebotButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.FileBotPath);
+            if (Directory.Exists(Path.GetDirectoryName(Settings.Default.FileBotPath)))
+            {
+                openFileDialog.InitialDirectory = Path.GetDirectoryName(Settings.Default.FileBotPath);
+            }
             DialogResult result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
